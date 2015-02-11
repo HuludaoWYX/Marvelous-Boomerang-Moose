@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,18 +35,16 @@ import java.util.List;
 /**
  * A login screen that offers login via userID/password.
  */
-public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     //protected static int loggedIn = 0;
 
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    /*
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "user:pass"
     };
-    */
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -96,9 +93,6 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         getLoaderManager().initLoader(0, null, this);
     }
 
-    /**
-     * Sends the user to the Home screen.
-     */
     protected void goToHome() {
         startActivity(new Intent(this, HomeActivity.class));
     }
@@ -156,20 +150,10 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         }
     }
 
-    /**
-     * Checks the validity of the user ID.
-     * @param user the user ID being checked
-     * @return true or false depending on if it is valid
-     */
     private boolean isUserIDValid(String user) {
         return user.length() > 3;
     }
 
-    /**
-     * Checks the validity of the password.
-     * @param password the password being checked
-     * @return true or false depending on if it is valid
-     */
     private boolean isPasswordValid(String password) {
         return password.length() > 3;
     }
@@ -282,7 +266,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // Not in this version
             // TODO: attempt authentication against a network service.
-            /*
+
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
@@ -297,13 +281,6 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
                     return pieces[1].equals(mPassword);
                 }
             }
-            */
-
-            if (MainActivity.credentials.containsKey(mUser)) {
-                Log.d(mUser,MainActivity.credentials.get(mUser));
-                return (MainActivity.credentials.get(mUser) == mPassword);
-            }
-
             return false;
 
             // This isn't used in this version
@@ -333,14 +310,6 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
-    }
-
-    /**
-     * Cancels login
-     * @param v the button being clicked
-     */
-    public void buttonCancelOnClick(View v) {
-        startActivity(new Intent(this, MainActivity.class));
     }
 }
 

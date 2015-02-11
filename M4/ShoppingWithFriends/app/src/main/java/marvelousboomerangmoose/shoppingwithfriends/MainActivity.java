@@ -13,16 +13,12 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
 
-import java.util.HashMap;
-
 
 public class MainActivity extends ActionBarActivity {
 
         /*if (LoginActivity.loggedIn == 1) {
             startActivity(new Intent(this, HomeActivity.class));
         }*/
-    public static HashMap<String, String> credentials = new HashMap<String, String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +29,6 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        credentials.put("user", "pass");
     }
 
     /**
@@ -41,19 +36,9 @@ public class MainActivity extends ActionBarActivity {
      *
      * @param v the button being clicked
      */
-    public void buttonLoginOnClick(View v) {
-//        Button button=(Button) v;
+    public void buttonOnClick(View v) {
+        Button button=(Button) v;
         startActivity(new Intent(this, LoginActivity.class));
-    }
-
-    /**
-     * When the registration button is clicked, this transitions to the registration screen.
-     *
-     * @param v the button being clicked
-     */
-    public void buttonRegOnClick(View v) {
-
-        startActivity(new Intent(this, RegActivity.class));
     }
 
     @Override

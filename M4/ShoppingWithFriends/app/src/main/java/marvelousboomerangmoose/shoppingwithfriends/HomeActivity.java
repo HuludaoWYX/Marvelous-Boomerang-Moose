@@ -1,6 +1,5 @@
 package marvelousboomerangmoose.shoppingwithfriends;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,11 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
-import android.widget.Button;
 
 
 public class HomeActivity extends ActionBarActivity {
-    /*This is a test comment*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +31,6 @@ public class HomeActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
-    }
-
-    /**
-     * Logs the user out of the program.
-     * @param v the button being clicked
-     */
-    public void logoutOnClick(View v) {
-        Button button=(Button) v;
-        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
